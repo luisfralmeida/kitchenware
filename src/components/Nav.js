@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import styled from 'styled-components';
 import { Icon, InlineIcon } from '@iconify/react';
@@ -9,9 +9,17 @@ import kitchenware_logo from "../img/kitchenware.svg";
 
 const Nav = () => {
 
+    let history = useHistory();
+    const redirectToSearchPage = () => {
+        history.push('/search')
+    }
+
     const [isSearchBarVisible, setSearchBarVisible] = useState(false);
 
     const showSearchBar = (event) => {
+        if (!isSearchBarVisible) {
+            redirectToSearchPage();
+        }
         setSearchBarVisible(!isSearchBarVisible);
       }
 
