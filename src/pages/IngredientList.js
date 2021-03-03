@@ -46,16 +46,18 @@ const Ingredients = () => {
             <div className="ingredients">
                 <StyledContentHeader>
                     <div className="gradient_overlay"></div>
-                        <img src={ingredient_category.image} alt={`${ingredient_category.name} image`}/>
-                        <div className="ingredient_name">
-                            <h2><span>{ingredient_category.name}</span> (ingredient category)</h2>
-                        </div>
+                    <img src={ingredient_category.image} alt={`${ingredient_category.name} image`}/>
+                    <div className="ingredient_name">
+                        <h2><span>{ingredient_category.name}</span> (ingredient category)</h2>
+                    </div>
                 </StyledContentHeader>
                 <StyledFilterSection>
                     <button name="" id="">Sort by</button>
                     <button class="active" name="" id="">Running out X</button>
+                    <button name="" id="">In stock</button>
                     <button name="" id="">Out of stock</button>
-                    <button name="" id="">Incoming orders</button>
+                    <button name="" id="">Expiring soon</button>
+                    <button name="" id="">Expired</button>
                 </StyledFilterSection>
                 {/* Show N ingredients from this category */}
                 <StyledCategories>
@@ -135,7 +137,6 @@ const StyledContentHeader = styled.div`
         // background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%); /* FF3.6+ */
         background: linear-gradient(to bottom,rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.65) 50%,rgba(0,0,0,0.95) 100%); /* W3C */
         z-index: 3;
-
     }
     .ingredient_name {
         position: absolute;

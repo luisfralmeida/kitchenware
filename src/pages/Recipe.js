@@ -15,7 +15,9 @@ const Recipe = () => {
                     <img src={recipe.image} alt={`${recipe.name} image`}/>
                     <div className="recipe_name">
                         <h2>Recipe: <span>{recipe.name}</span></h2>
+                        <button name="" id="">Set as favourite</button>
                     </div>
+                    <button name="" id="">Set as favourite</button>
                     <div className="main_details">
                         <p><span>5</span> ingredients</p>
                         <p>|</p>
@@ -66,6 +68,7 @@ const Recipe = () => {
                     <h3>Cooking time:</h3>
                     <h5>15 minutes</h5> 
                     <button name="" id="">Step-by-step mode button (opens pop-up)</button>
+                    <h3>Instructions:</h3>
                     <h5>Step 1 - Blablabla</h5>
                     <h5>Step 2 - Blablabla</h5>
                     <h5>Step 3 - Blablabla</h5>
@@ -129,7 +132,7 @@ const StyledPhoto = styled.div`
         left: 0;
         top: 50%;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         width: 100%;
         z-index: 5;
         h2 {

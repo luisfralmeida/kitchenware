@@ -64,10 +64,10 @@ const Recipes = () => {
             <div className="ingredients">
                 <StyledContentHeader>
                     <div className="gradient_overlay"></div>
-                        <img src={recipe_category.image} alt={`${recipe_category.name} image`}/>
-                        <div className="recipe_name">
-                            <h2><span>{recipe_category.name}</span> (recipe category)</h2>
-                        </div>
+                    <img src={recipe_category.image} alt={`${recipe_category.name} image`}/>
+                    <div className="recipe_name">
+                        <h2><span>{recipe_category.name}</span> (recipe category)</h2>
+                    </div>
                 </StyledContentHeader>
                 {/* Show N recipes from this category */}
                 <StyledCategories>
