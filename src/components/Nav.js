@@ -5,6 +5,7 @@ import { Icon, InlineIcon } from '@iconify/react';
 import bxSearch from '@iconify/icons-bx/bx-search';
 import settings28Filled from '@iconify/icons-fluent/settings-28-filled';
 import fluent28alert from '@iconify/icons-fluent/alert-28-filled';
+import { getUnreadAlertsNumber } from '../helperFunctions';
 
 import kitchenware_logo from "../img/kitchenware.svg";
 
@@ -12,7 +13,11 @@ const Nav = ({
     isSearchPageVisible,
     setIsSearchPageVisible,
     searchString,
-    setSearchString
+    setSearchString,
+    alerts,
+    setAlerts,
+    isAlertListVisible,
+    setIsAlertListVisible
 }) => {
 
     // let history = useHistory();
@@ -41,6 +46,33 @@ const Nav = ({
         setIsSearchPageVisible(true);
         console.log("searchString:" + searchString);
     }
+
+    const toggleAlertListHandler = () => {
+        // if we're closing the alert list, set all alerts as read
+        if (isAlertListVisible) {
+            setAllAlertsAsRead(alerts);
+        }
+        setIsAlertListVisible(!isAlertListVisible);
+      }
+
+    const setAllAlertsAsRead = (alerts) => {
+        let modifiedAlerts = [];
+        for (let key in alerts) {
+            console.log("key:", key);
+            modifiedAlerts[key] = [
+                ...alerts[key].map((alert) => {
+                        return {
+                            ...alert,
+                            read: true
+                        }
+                })
+            ]
+        }
+        setAlerts(modifiedAlerts);
+    };
+
+    
+    const numberAlertsUnread = getUnreadAlertsNumber(alerts);
 
     return (
         <StyledNav>
@@ -73,12 +105,12 @@ const Nav = ({
                         <Icon icon={bxSearch} />
                     </StyledIcon>
                 </button>
-                <button onClick="">
+                <button  onClick={toggleAlertListHandler}>
                     <StyledIcon>
-                        <Icon icon={fluent28alert} />
+                        <Icon icon={fluent28alert}/>
                     </StyledIcon>
-                    <StyledRedBubble>
-                        1
+                    <StyledRedBubble className={`${numberAlertsUnread === 0 ? 'hide' : ''}`}>
+                    {numberAlertsUnread}
                     </StyledRedBubble>
                 </button>
             </StyledSearch>
@@ -238,6 +270,13 @@ const StyledRedBubble = styled.div`
     border-radius: 50%;
     background-color: red;
     color: #b1b1b1;
+    opacity: 1;
+    transition-delay: 1.5s;
+    transition: opacity 0.25s cubic-bezier(0.88, 0.11, 0.83, 0.65);
+    &.hide {
+        display: none;
+        opacity: 0;
+    }
 `
 
 export default Nav;
