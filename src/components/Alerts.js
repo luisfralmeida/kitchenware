@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Icon, InlineIcon } from '@iconify/react';
 import alert16Regular from '@iconify/icons-fluent/alert-16-regular';
 import { getIngredientsInShortSupply, getRecipesInShortSupply } from '../helperFunctions';
+import { format } from 'date-fns';
 
 
 const Alerts = ({
@@ -219,12 +220,17 @@ const Alerts = ({
                         return (
                             <StyledAlert>
                                 <li>
+                                    <StyledAlertContent>
                                     <h5>{!alert.read ? <span className="new">NEW!</span> : ''}{alert.warning_type}: {alert.name}</h5>
                                     {
                                         alert.message.map((text) => {
                                             return (<p>{text}</p>)
                                         })
                                     }
+                                    </StyledAlertContent>
+                                    <StyledAlertTime>
+                                <div>{format(new Date(alert.created_on), 'hh:mm')}</div>
+                                    </StyledAlertTime>
                                 </li>
                             </StyledAlert>
                         )
@@ -246,35 +252,54 @@ const StyledCloseButton = styled.div`
     }
 `
 
-const StyledAlert = styled.div`
-    /* padding: 1rem;
-    padding-left: 0.5rem; */
-    margin-top: 1rem;
-    margin-bottom: 3rem;
-    li {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-    }
+const StyledAlertContent = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 5rem);
     h5 {
-        width: 100%;
+        min-width: 100%;
         font-size: 0.9rem;
         font-weight: bold;
-        background-color: #1a0202;
+        /* background-color: #1a0202; */
         color: white;
         padding: 0.25rem;
-        padding-left: 0.5rem;
-        margin-bottom: 0.5rem;
+        padding-left: 1.25rem;
+        margin-bottom: 1rem;
     }
     p {
+        width: 100%;
         font-size: 0.7rem;
         padding: 0;
-        padding-left: 1.25rem;
+        padding-left: 1.75rem;
     }
     .new {
         color: red;
         font-weight: bold;
         padding-right: 0.5rem;
+    }
+`
+
+const StyledAlertTime = styled.div`
+    /* width: 5rem; */
+    /* padding-top: 0.25rem; */
+    padding-left: 0.5rem;
+    /* padding-right: 0.5rem; */
+    font-size: 0.75rem;
+    margin: auto;
+`
+
+const StyledAlert = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* padding: 1rem;
+    padding-left: 0.5rem; */
+    margin-top: 1rem;
+    margin-bottom: 5.5rem;
+    li {
+        min-width: 100%;
+        display: flex;
+        justify-content: flex-start;
     }
 `
 
@@ -292,7 +317,7 @@ const StyledHeader = styled.div`
 
 const StyledAlertMenu = styled.div`
     position: fixed;
-    width: calc(100vw - 60vw - 10rem);
+    width: calc(100vw - 60vw - 6rem);
     height: 90vh;
     top: 10vh;
     right: 0;

@@ -6,6 +6,10 @@ import bxSearch from '@iconify/icons-bx/bx-search';
 import settings28Filled from '@iconify/icons-fluent/settings-28-filled';
 import fluent28alert from '@iconify/icons-fluent/alert-28-filled';
 import { getUnreadAlertsNumber } from '../helperFunctions';
+import formPrevious from '@iconify-icons/grommet-icons/form-previous';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faChevronLeft} from '@fortawesome/free-solid-svg-icons';
+
 
 import kitchenware_logo from "../img/kitchenware.svg";
 
@@ -20,6 +24,7 @@ const Nav = ({
     setIsAlertListVisible
 }) => {
 
+    let history = useHistory();
     // let history = useHistory();
     // const redirectToSearchPage = () => {
     //     history.push('/search')
@@ -55,6 +60,13 @@ const Nav = ({
         setIsAlertListVisible(!isAlertListVisible);
       }
 
+    const onBackToPreviousPageHandler = () => {
+        history.goBack();
+        console.log("history");
+        console.log(history);
+        // history.push('/orders');
+    };
+
     const setAllAlertsAsRead = (alerts) => {
         let modifiedAlerts = [];
         for (let key in alerts) {
@@ -88,8 +100,10 @@ const Nav = ({
                 <img src={kitchenware_logo} alt="kitchenware logo"/>
                 </Link> 
             </StyledLogo>
-            <div></div>
-            <div></div>
+            <StyledBackIcon>
+                <FontAwesomeIcon icon={faChevronLeft} onClick={onBackToPreviousPageHandler} />
+                {/* <Icon icon={formPrevious} onClick={onBackToPreviousPageHandler} /> */}
+            </StyledBackIcon>
             <StyledSearch>
                 <div className={`search ${isSearchBarVisible ? 'open' : ''}`}>
                     {/*
@@ -206,7 +220,7 @@ const StyledSearch = styled.div`
     .search {
         position: absolute;
         height: 60%;
-        width: 100%;
+        // width: 100%;
         opacity: 0;
         transform: translateX(200%);
         transition: transform 2s ease, opacity 1s ease;
@@ -223,7 +237,7 @@ const StyledSearch = styled.div`
         */
         input {
             padding-left: 1rem;
-            width: 100%;
+            width: calc(100vw - 13.5rem);
             height: 100%;
             background-color: #1c1c1c;
             // background-color: #050c2c;
@@ -260,6 +274,21 @@ const StyledIcon = styled.div`
         width: 1.75rem;
     }
 `
+
+const StyledBackIcon = styled.div`
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: #b1b1b1;
+    height: 10vh;
+    svg {
+        height: 1.25rem;
+        width: 1rem!important;
+    }
+`
+
 const StyledRedBubble = styled.div`
     position: absolute;
     top: 31%;

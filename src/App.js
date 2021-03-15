@@ -185,7 +185,8 @@ function App() {
             <RecipeFeed
                 recipeData={recipeData}
                 setRecipeData={setRecipeData}
-                recipeCategories={recipeCategories} />
+                recipeCategories={recipeCategories}
+                ingredientData={ingredientData} />
           </Route>
           <Route path="/orders" exact>
             <Orders
@@ -206,7 +207,9 @@ function App() {
                 mealPlanningData={recipeData} />
           </Route>
           <Route path="/stats" exact>
-            <Stats />
+            <Stats 
+                recipeData={recipeData}
+                ingredientData={ingredientData} />
           </Route>
           <Route path="/about" exact>
             <About />
@@ -247,6 +250,7 @@ function App() {
                 ingredientData={ingredientData}
                 setIngredientData={setIngredientData}
                 ingredientCategories={ingredientCategories}
+                recipeData={recipeData}
                 orders={orders}
                 setOrders={setOrders}
                 isEventPopupOpen={isEventPopupOpen}
