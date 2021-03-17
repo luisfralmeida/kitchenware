@@ -369,8 +369,8 @@ const recipes = () => {
             ], 
             servings: 5,
             minimum_availability : {
-                value: 2,
-                new_value: 2,
+                value: 0,
+                new_value: 0,
                 min_input: 0,
                 max_input: 100,
                 step: 1,
