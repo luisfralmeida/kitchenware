@@ -305,6 +305,9 @@ const recipes = () => {
                     name: 'gluten free'
                 },
                 {
+                    name: 'chicken'
+                },
+                {
                     name: 'food'
                 },
             ],
@@ -341,7 +344,7 @@ const recipes = () => {
                 },
             ],
             preparation_time: 10,
-            cooking_time: 35,
+            cooking_time: 40,
             steps: [
                 {
                     number: 1,
@@ -360,7 +363,7 @@ const recipes = () => {
                 },
                 {
                     number: 4,
-                    time: 15,
+                    time: 5,
                     description: "Transfer the beef to a warm platter, cover loosely with foil and leave to rest for at least 20 minutes, and anything up to 40 minutes, before serving."
                 },
             ], 

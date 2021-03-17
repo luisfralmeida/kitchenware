@@ -842,8 +842,8 @@ const ingredients = () => {
 
             ],
             in_stock : {
-                value: 2,
-                new_value: 2,
+                value: 1.2,
+                new_value: 1.2,
                 min_input: 0,
                 max_input: 100,
                 step: 0.1,
