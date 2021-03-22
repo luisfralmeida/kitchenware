@@ -1,3 +1,3 @@
 # UPSKILL - Kitchenware App
 
-## Em colaboração com a Andreia
+## Em colaboração com o Francisco e com a Andreia
